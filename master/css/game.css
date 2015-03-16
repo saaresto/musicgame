@@ -1,0 +1,135 @@
+.game-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin-left: -30px;
+}
+
+#ajax-loading {
+    width: 128px;
+    height: 128px;
+    margin: 100px auto;
+    display: none;
+    background: url("../../assets/ajax-loader.gif") no-repeat;
+}
+
+.genre-list {
+    max-width: 800px;
+    margin: auto;
+}
+.genre-item {
+    cursor: pointer;
+    display: inline-block;
+    list-style: none;
+    font-size: 16px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #ffffff;
+    transition: 0.1s linear;
+}
+.genre-item:hover {
+    color: #ffffff;
+    background: #2e3138;
+    transition: 0.1s linear;
+}
+
+
+.game-slide {
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+}
+
+#game-progress {
+    width: 500px;
+    height: 25px;
+    margin: auto;
+    background: #bcbcbc;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#game-progress-bar {
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    background: #5bc0de;
+    top: 0;
+    left: 0;
+    border-right: 2px solid #000000;
+}
+
+.jumbo {
+    width: 80%;
+    height: 350px;
+    padding-top: 50px;
+    background: #1E2129;
+    background-position: left center;
+    margin: auto;
+    min-width: 500px;
+    position: relative;
+}
+
+.play-quest-button {
+    font-size: 140px;
+    width: 300px;
+    padding-top: 60px;
+    padding-bottom: 50px;
+    color: #2e3138;
+    background: #ffffff;
+    margin: auto;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.play-quest-button:hover {
+    color: #5bc0de;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.game-options {
+    margin: 10px auto;
+    width: 500px;
+    padding: 0;
+}
+.game-options li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 500px;
+    list-style: none;
+    transition: 0.1s linear;
+    border-bottom: 2px solid #2e3138;
+}
+
+.game-options li:hover {
+    background: #1E2129;
+    color: #ffffff;
+    transition: 0.1s linear;
+    cursor: pointer;
+}
+
+.slides-container {
+    display: none;
+}
+
+#percentage {
+    position: relative;
+    z-index: 2;
+}
+
+#jumbo-notificator {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    font-size: 200px;
+    font-weight: bold;
+}
+
+#jumbo-notificator p {
+    margin: 50px 0;
+}

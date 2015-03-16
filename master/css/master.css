@@ -1,0 +1,216 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:500|Open+Sans:400,300);
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
+span.eleven {
+    color: #5bc0de;
+}
+aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background: #2e3138;
+    height: 100%;
+}
+
+aside img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+aside a.username {
+    text-align: center;
+    width: 200px;
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    margin: auto;
+    margin-top: 15px;
+    font-size:18px;
+}
+
+aside hr {
+    width: 80%;
+    border-color: #525252;
+}
+
+aside a.navlink {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    transition:0.2s linear;
+    font-size: 18px;
+}
+
+aside a.emphasize {
+    margin: 20px 0 10px 0;
+    color: #5bc0de;
+}
+
+aside a.navlink:hover {
+    background: #1E2129;
+}
+aside a.emphasize:hover{
+    background: #ffffff;
+    color: #0d66d5;
+}
+aside a.active {
+    background: #1E2129;
+}
+
+aside a.logout {
+    position: absolute;
+    bottom: 30px;
+}
+aside a.logout:hover {
+    color: #ff0000;
+}
+
+
+div.content {
+    margin-left: 250px;
+    padding-left: 30px;
+    padding-top: 20px;
+    position: relative;
+    font-weight: lighter;
+}
+
+.content .about {
+    width: 550px;
+}
+.content h1 {
+    margin-top: 230px;
+    margin-bottom: 15px;
+    font-weight: lighter;
+    font-size: 48px;
+}
+
+.content .wallpaper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 240px;
+    width: 100%;
+    background: #5bc0de;
+}
+
+.content ol.ranks {
+    display: inline-block;
+    margin-right: 50px;
+    width: 600px;
+}
+.content ol.ranks > li {
+    padding: 15px;
+    position: relative;
+    width: 600px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+.content ol.ranks > li:hover {
+    background: rgba(21, 112, 234, 0.02);
+}
+.content ol.ranks > li > span {
+    opacity: 0.8;
+    position: absolute;
+    right: 15px;
+}
+.content ol.ranks > li.active {
+    color: #204d74;
+}
+
+.content .top {
+    display: inline-block;
+}
+
+.top-details {
+    color: #000000;
+    margin-top: 10px;
+    display: none;
+}
+
+.volume-container {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 26px;
+    position: relative;
+}
+
+.volume-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.volume-bar-container {
+    display: inline-block;
+    position: relative;
+    height: 15px;
+    width: 100px;
+    background: #bcbcbc;
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.volume-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+    background: #5bc0de;
+    border-right: 2px solid #000000;
+}
+
+.content .motivation {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.self-stats-block {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.self-stats-progress {
+    text-align: center;
+    position: relative;
+    width: 300px;
+    height: 20px;
+    border: 1px solid #000000;
+}
+.self-stats-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 33%;
+    background: #5bc0de;
+}
+
+.self-stats-value {
+    vertical-align: middle;
+    font-size: 2em;
+    margin-left: 30px;
+}
+
+.self-stats-name {
+    vertical-align: middle;
+}

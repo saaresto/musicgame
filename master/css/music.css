@@ -1,0 +1,77 @@
+.audiofiles-container {
+    width: 100%;
+    height: 100%;
+}
+
+.player-item {
+    width: 90%;
+    min-width: 500px;
+    height: 60px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    position: relative;
+    border-bottom: 1px solid #bcbcbc;
+}
+
+.player-item {
+    clear: left;
+}
+
+.player-item .player-item-button {
+    float: left;
+    font-size: 30px;
+    padding: 11px 13px 10px 17px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 20px;
+    transition: 0.1s linear;
+}
+
+.player-item .player-item-button:hover {
+    background: #2e3138;
+    color: #ffffff;
+    transition: 0.1s linear;
+}
+
+.player-item-duration {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.player-item-progress {
+    position: relative;
+    top:10px;
+    max-width: 500px;
+    margin-left: 80px;
+    height: 10px;
+    background: #bcbcbc;
+    cursor: pointer;
+}
+
+.player-item-progress .progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+//    width: 45%;
+    background: #5bc0de;
+    border-right: 2px solid #000000;
+}
+
+input#search-personal-music {
+    margin-bottom: 10px;
+    width: 90%;
+    border: none;
+    border-bottom: 2px solid #000000;
+    font-size: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+input#search-personal-music:focus {
+    border-bottom: 2px solid #5bc0de;
+    outline: none;
+}
