@@ -88,6 +88,7 @@ $(function(e){
             setTimeout(function(){getWithAjax()}, 1500);
         } else if (progress == 100) {
             updateDatabaseRecord('win_count', 'inc');
+            alert("C0ИGЯTUL4T10ИS! ETO WIN!\nГде-то в базе данных заинкрементился счётчик побед. Это того стоило.");
             $.cookie('PROGRESS', 0);
             STREAK++;
             setTimeout(function(){getWithAjax()}, 1500);

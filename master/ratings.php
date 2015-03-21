@@ -5,7 +5,7 @@
 $link = mysql_connect($DBHOST, $DBUSER, $DBPASSWORD);
 mysql_select_db($DBNAME);
 
-$leaders_query = "SELECT * FROM user_stats ORDER BY user_stats.successful_hits_count/user_stats.hit_count DESC";
+$leaders_query = "SELECT * FROM user_stats WHERE hit_count>0 ORDER BY user_stats.successful_hits_count/user_stats.hit_count DESC";
 $leaders = mysql_query($leaders_query);
 if (!$leaders) {
     die(mysql_error());

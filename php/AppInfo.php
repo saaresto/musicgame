@@ -40,7 +40,6 @@ $GENRES = array(
     '9'     =>  'Jazz & Blues',
     '10'    =>  'Drum & Bass',
     '11'    =>  'Trance',
-    '12'    =>  'Chanson',
     '13'    =>  'Ethic',
     '14'    =>  'Acoustic & Vocal',
     '15'    =>  'Reggae',
