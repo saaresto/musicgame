@@ -24,7 +24,7 @@ $count = 300;
 if (isset($_GET['game'])) {
     $music = $vk->api("audio.getPopular", array(
         'genre_id'  =>  $_GET['genre'],
-        'only_eng'  =>  '1',
+        'only_eng'  =>  $ONLY_ENG,
         'count'     =>  $count
     ));
     echo json_encode($music);

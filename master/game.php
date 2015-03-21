@@ -3,6 +3,7 @@ setcookie('PROGRESS', '0', time() + 60 * 60);
 ?>
 
 <div class="game-container">
+    <p style="opacity: 0.5; font-size: 13px">Due to unknown reason VK sometimes returns a broken link to an audiofile. That might become a reason why you can't hear anything. If track is not playing after 15 seconds, probably, it is time to test your luck.</p>
     <div id="ajax-loading"></div>
 
     <div class="genre-choice-container">

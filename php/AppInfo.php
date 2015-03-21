@@ -17,6 +17,7 @@ $vk_config = array(
     'api_settings'  => 'audio' // In this example use 'friends'.
     // If you need infinite token use key 'offline'.
 );
+$ONLY_ENG = '0';
 
 // Database info.
 $DBHOST = 'localhost';
