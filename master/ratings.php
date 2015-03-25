@@ -10,6 +10,7 @@ $leaders = mysql_query($leaders_query);
 if (!$leaders) {
     die(mysql_error());
 }
+
 ?>
 
 <div class="wallpaper" style="background: url('../assets/forest<?php echo rand(1,5);?>.jpg')"></div>
@@ -19,7 +20,7 @@ if (!$leaders) {
         <?php
             while ($leader = mysql_fetch_array($leaders)) {
             ?>
-                <li><?php echo $leader['screen_name'] ?>
+                <li><a title="Go to VK page" target="_blank" href="http://vk.com/<?php echo $leader['screen_name'] ?>"><?php echo $leader['screen_name'] ?></a>
                     <span>
                         <?php
                         echo $leader['hit_count'] != 0 ? round($leader['successful_hits_count']/$leader['hit_count'], 3) : 0;
@@ -49,10 +50,14 @@ $self = mysql_fetch_array($self);
         <span class="self-stats-name"><strong>Position in global rating:</strong></span>
         <span class="self-stats-value" style="color: #5bc0de">
             <?php
-            $query = "SELECT count(*) FROM user_stats WHERE successful_hits_count/hit_count > ";
-            $query .= "(SELECT successful_hits_count/hit_count FROM user_stats WHERE uid=".$_COOKIE['USER_ID'].");";
-            $rs = mysql_fetch_array(mysql_query($query));
-            print_r($rs[0] + 1);
+            if ($self['hit_count'] > 0) {
+                $query = "SELECT count(*) FROM user_stats WHERE successful_hits_count/hit_count > ";
+                $query .= "(SELECT successful_hits_count/hit_count FROM user_stats WHERE uid=".$_COOKIE['USER_ID'].");";
+                $rs = mysql_fetch_array(mysql_query($query));
+                print_r($rs[0] + 1);
+            } else {
+                echo("0");
+            }
             ?>
         </span>
     </div>

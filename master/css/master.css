@@ -123,6 +123,14 @@ div.content {
 .content ol.ranks > li:hover {
     background: rgba(21, 112, 234, 0.02);
 }
+.content ol.ranks > li > a {
+    text-decoration: none;
+    color: #000;
+}
+.content ol.ranks > li > a:hover {
+    font-weight: bolder;
+    color: #204d74;
+}
 .content ol.ranks > li > span {
     opacity: 0.8;
     position: absolute;

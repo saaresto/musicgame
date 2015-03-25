@@ -17,7 +17,7 @@ $vk_config = array(
     'api_settings'  => 'audio' // In this example use 'friends'.
     // If you need infinite token use key 'offline'.
 );
-$ONLY_ENG = '0';
+$ONLY_ENG = '1';
 
 // Database info.
 $DBHOST = 'localhost';
@@ -38,7 +38,7 @@ $GENRES = array(
     '7'     =>  'Metal',
     '21'    =>  'Alternative',
     '8'     =>  'Dubstep',
-    '9'     =>  'Jazz & Blues',
+    '1001'     =>  'Jazz & Blues',
     '10'    =>  'Drum & Bass',
     '11'    =>  'Trance',
     '13'    =>  'Ethic',
@@ -51,4 +51,6 @@ $GENRES = array(
     '18'    =>  'Other'
 );
 
+
 ?>
+

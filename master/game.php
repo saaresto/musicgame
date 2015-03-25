@@ -10,7 +10,7 @@ setcookie('PROGRESS', '0', time() + 60 * 60);
         <h1>Choose the genre</h1>
         <ul class="genre-list">
         <?php
-            for ($i = 0; $i < count($GENRES) + 3; $i++) {
+            for ($i = 0; $i < 1002 + 3; $i++) {
                 if (isset($GENRES[$i])) {
                     echo "<li class='genre-item' id='genre-$i' onclick='setGenre($i)'>".$GENRES[$i]."</li>";
                 }

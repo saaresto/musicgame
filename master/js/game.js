@@ -6,7 +6,9 @@ var mocks = ["Shameful", "Bad enough", "Miserable", "Mediocre", "W for the Worst
 
 $(function(e){
 
+// TODO check 404 on right answer
 
+    // TODO выбирать включение русских треков в ротацию
     /*
         Function hides the current slide, if it exists.
         Shows loading animation.
@@ -48,7 +50,7 @@ $(function(e){
             type: 'GET',
             data: {column: column, action: action},
             success: function(data) {
-                console.log("db updated");
+                //console.log("db updated");
             }
         });
     }
@@ -71,10 +73,13 @@ $(function(e){
 
         /*$("#jumbo-notificator").css({backgroundColor:"rgba(0, 255, 0, 0.5)"})
             .html("<p>RIGHT</p>").fadeIn().delay(1000).fadeOut();*/
-        $.growl.notice({
-            title: cheers[getRandomInt(0, cheers.length - 1)],
-            message: 'Right'
-        });
+        if ($ != null && $ != undefined) {
+            $.growl.notice({
+                title: cheers[getRandomInt(0, cheers.length - 1)],
+                message: 'Right'
+            });
+        }
+
 
         var progress = parseInt($.cookie('PROGRESS')) + 10;
         $("#percentage").html(progress + "%");
@@ -111,11 +116,11 @@ $(function(e){
 
         /*$("#jumbo-notificator").css({backgroundColor:"rgba(255, 0, 0, 0.5)"})
             .html("<p>WRONG</p>").fadeIn().delay(1000).fadeOut();*/
-
-        $.growl.error({
-            title: mocks[getRandomInt(0, cheers.length - 1)],
-            message: 'Wrong'
-        });
+        if ($ != null && $ != undefined)
+            $.growl.error({
+                title: mocks[getRandomInt(0, cheers.length - 1)],
+                message: 'Wrong'
+            });
 
         $("#percentage").html("0%");
         $("#game-progress-bar").css({
@@ -135,6 +140,7 @@ $(function(e){
      */
     $(".genre-list").on("click", ".genre-item", function(){
         $(".genre-choice-container").fadeOut(50);
+        console.log("genre is set")
         getWithAjax();
     });
 
@@ -149,14 +155,26 @@ $(function(e){
         $(".game-options > li").each(function(){
             $(this).css("pointer-events", "none");
         });
-        console.log("option clicked");
+        //console.log("option clicked");
 
 
         var id = $(this).attr("data-songid");
 
         if (id == FOURTYTWO) {
+            $(this).css({
+                "backgroundColor": "rgba(0, 153, 0, 0.3)",
+                "border-bottom-color": "rgb(0, 153, 0)"
+            });
             processRightAnswer();
         } else {
+            $(this).css({
+                "backgroundColor": "rgba(153, 0, 0, 0.3)",
+                "border-bottom-color": "rgb(153, 0, 0)"
+            });
+            $(".game-options > li[data-songid=" + FOURTYTWO + "]").css({
+                "backgroundColor": "rgba(0, 153, 0, 0.3)",
+                "border-bottom-color": "rgb(0, 153, 0)"
+        });
             processWrongAnswer();
         }
     });
@@ -164,7 +182,6 @@ $(function(e){
 
 function setGenre(gid) {
     GENRE = gid;
-    console.log("genre is set")
 }
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -193,6 +210,7 @@ function getGameSlide(json) {
     }
     //console.log(indexes);
 
+    shuffle(indexes);
     FOURTYTWO = indexes[getRandomInt(0, indexes.length - 1)];
     //console.log(FOURTYTWO);
 
@@ -231,6 +249,12 @@ function getGameSlide(json) {
     return slide;
 }
 
+/*
+    Returns the value stored in cookies with certain key.
+
+    @param name cookie key
+     @return String cookie value
+ */
 function readCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -261,3 +285,10 @@ function playQuest() {
 function randomNumber(min, max) {
     return Math.round(Math.random() * (max - min + 1) + min);
 }
+
+//+ Jonas Raoni Soares Silva
+//@ http://jsfromhell.com/array/shuffle [v1.0]
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
