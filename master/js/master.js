@@ -10,6 +10,20 @@ $(document).ready(function(e){
 
         $(".navlink").removeClass("active");
         $(this).addClass("active");
+
+        var url = $(this).attr("data-target");
+        var content = $(".content");
+        if (url.indexOf("game") > -1) {
+            $.ajax({
+                url: "game.php",
+                beforeSend: function() {
+                    content.html("Loading");
+                },
+                success: function(data) {
+                    content.html(data);
+                }
+            });
+        }
     });*/
     var url = window.location + '';
     var pieces = url.split("?");

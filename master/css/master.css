@@ -63,6 +63,7 @@ aside a.emphasize {
 
 aside a.navlink:hover {
     background: #1E2129;
+    cursor: pointer;
 }
 aside a.emphasize:hover{
     background: #ffffff;

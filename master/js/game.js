@@ -7,6 +7,7 @@ var mocks = ["Shameful", "Bad enough", "Miserable", "Mediocre", "W for the Worst
 $(function(e){
 
 // TODO check 404 on right answer
+    // TODO увеличить время слайда на секунду
 
     // TODO выбирать включение русских треков в ротацию
     /*
@@ -162,17 +163,17 @@ $(function(e){
 
         if (id == FOURTYTWO) {
             $(this).css({
-                "backgroundColor": "rgba(0, 153, 0, 0.3)",
+                "color": "rgba(0, 153, 0, 1)",
                 "border-bottom-color": "rgb(0, 153, 0)"
             });
             processRightAnswer();
         } else {
             $(this).css({
-                "backgroundColor": "rgba(153, 0, 0, 0.3)",
+                "color": "rgba(153, 0, 0, 1)",
                 "border-bottom-color": "rgb(153, 0, 0)"
             });
             $(".game-options > li[data-songid=" + FOURTYTWO + "]").css({
-                "backgroundColor": "rgba(0, 153, 0, 0.3)",
+                "color": "rgba(0, 153, 0, 1)",
                 "border-bottom-color": "rgb(0, 153, 0)"
         });
             processWrongAnswer();
@@ -214,6 +215,12 @@ function getGameSlide(json) {
     FOURTYTWO = indexes[getRandomInt(0, indexes.length - 1)];
     //console.log(FOURTYTWO);
 
+    /*var request = new XMLHttpRequest();
+    request.open('GET', music[FOURTYTWO]['url'], false);
+    request.send(null);
+    if (request.status === 200) {
+        alert("yep");
+    }*/
 
     var slide = "";
 

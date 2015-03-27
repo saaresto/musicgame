@@ -9,13 +9,8 @@ require("AppInfo.php");
 require("VKClass.php");
 require("VKException.php");
 require_once("functions.php");
-/*
- * Database connection.
- */
 $link = mysql_connect($DBHOST, $DBUSER, $DBPASSWORD);
 mysql_select_db($DBNAME);
-
-
 $vk = new VK\VK($vk_config['app_id'], $vk_config['api_secret']);
 $vk->setToken($_COOKIE['TOKEN']);
 
@@ -43,7 +38,6 @@ if (isset($_GET['db'])) {
             $query = "UPDATE user_stats SET ".$column."=".$column."-1 WHERE uid=".$user."";
             break;
     }
-
     mysql_query($query);
 }
 ?>

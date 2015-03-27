@@ -38,12 +38,3 @@ $count = $music[0];
 
 
 <script src="js/player.js"></script>
-
-<!--<div class="player-item" id="321-item">
-    <audio id="321-audio">
-        <source src="http://cs1-50v4.vk-cdn.net/p12/4bd3c2bf0d6ab5.mp3?extra=BO9mpqwSyBrb8adj0EbGukGHTZ4gPNbYelWuoBadWbD7EDptv1XJcPwJdJUuOmyxutNYa6bN7GLPlQ4A9GFmIBB5QPJ4OA,220" type="audio/mpeg">
-    </audio>
-    <div class="player-item-button" id="321-btn" onclick="playAudio(321)"><span class="glyphicon glyphicon-play"></div></button>
-    <div class="player-item-title" id="321-title">Lamar - Backseat</div>
-    <span class="player-item-duration" id="321-duration">3:40</span>
-</div>-->
