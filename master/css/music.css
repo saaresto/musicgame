@@ -1,6 +1,5 @@
 .audiofiles-container {
     width: 100%;
-    height: 100%;
 }
 
 .player-item {
@@ -74,4 +73,17 @@ input#search-personal-music {
 input#search-personal-music:focus {
     border-bottom: 2px solid #5bc0de;
     outline: none;
+}
+
+.global-audiofiles-container {
+    width: 100%;
+    display: none;
+}
+
+#ajax-loading {
+    width: 128px;
+    height: 128px;
+    margin: 100px auto;
+    display: none;
+    background: url("../../assets/ajax-loader.gif") no-repeat;
 }

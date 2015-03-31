@@ -40,4 +40,16 @@ if (isset($_GET['db'])) {
     }
     mysql_query($query);
 }
+if (isset($_GET['music'])) {
+    $count = $_GET['count'];
+    $query = $_GET['query'];
+
+    $music = getGlobalMusic($query, $count, $vk);
+    $list = "";
+
+    for ($i = 1; $i < $count; $i++) {
+        $list .= getPlayerItem($music[$i]);
+    }
+    echo($list);
+}
 ?>

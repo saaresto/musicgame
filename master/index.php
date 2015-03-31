@@ -1,4 +1,5 @@
 <?php
+    // TODO set up font sizes
 require_once("../php/AppInfo.php");
 /*
 * NO GUESTS ALLOWED.

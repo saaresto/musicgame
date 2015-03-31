@@ -19,22 +19,16 @@ $count = $music[0];
     <h2>Your audiofiles</h2>
     <input id="search-personal-music" type="text" placeholder="Search"/>
 
-    <?php for ($i = 1; $i <= $count; $i++) {?>
+    <?php
+    for ($i = 1; $i <= $count; $i++) {
+        echo getPlayerItem($music[$i]);
+    }
+    ?>
 
-    <div class="player-item" id="<?php echo $music[$i]['aid']; ?>-item">
-        <audio id="<?php echo $music[$i]['aid']; ?>-audio" preload='none' ontimeupdate="updateProgressBar(<?php echo $music[$i]['aid']; ?>)">
-            <source src="<?php echo $music[$i]['url']; ?>" type="audio/mpeg">
-        </audio>
-        <div class="player-item-button" id="<?php echo $music[$i]['aid']; ?>-btn" onclick="playAudio(<?php echo $music[$i]['aid']; ?>)"><span class="glyphicon glyphicon-play"></div></button>
-        <div class="player-item-title" id="<?php echo $music[$i]['aid']; ?>-title"><?php echo $music[$i]['artist']; ?> - <?php echo $music[$i]['title']; ?></div>
-        <div class="player-item-progress" id="<?php echo $music[$i]['aid']; ?>-timeline" onclick="rewindAudio(<?php echo $music[$i]['aid']; ?>)">
-            <span class="progressbar" id="<?php echo $music[$i]['aid']; ?>-bar"></span>
-        </div>
-        <span class="player-item-duration" id="<?php echo $music[$i]['aid']; ?>-duration"><?php echo getSongDuration($music[$i]['duration']); ?></span>
-    </div>
-    <?php } ?>
 
 </div>
-
+<div class="global-audiofiles-container">
+    <h2>Audiofiles</h2>
+</div>
 
 <script src="js/player.js"></script>

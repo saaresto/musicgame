@@ -7,7 +7,6 @@ var mocks = ["Shameful", "Bad enough", "Miserable", "Mediocre", "W for the Worst
 $(function(e){
 
 // TODO check 404 on right answer
-    // TODO увеличить время слайда на секунду
 
     // TODO выбирать включение русских треков в ротацию
     /*
@@ -72,14 +71,14 @@ $(function(e){
         var audio = document.getElementById("quest-audio");
         audio.pause();
 
-        /*$("#jumbo-notificator").css({backgroundColor:"rgba(0, 255, 0, 0.5)"})
-            .html("<p>RIGHT</p>").fadeIn().delay(1000).fadeOut();*/
-        if ($ != null && $ != undefined) {
+        $("#jumbo-notificator").css({backgroundColor:"rgba(0, 255, 0, 0.2)"})
+            .html("<p>RIGHT</p>").fadeIn().delay(2000).fadeOut();
+        /*if ($ != null && $ != undefined) {
             $.growl.notice({
                 title: cheers[getRandomInt(0, cheers.length - 1)],
                 message: 'Right'
             });
-        }
+        }*/
 
 
         var progress = parseInt($.cookie('PROGRESS')) + 10;
@@ -91,13 +90,13 @@ $(function(e){
         if (progress != 100) {
             $.cookie('PROGRESS', progress);
             STREAK++;
-            setTimeout(function(){getWithAjax()}, 1500);
+            setTimeout(function(){getWithAjax()}, 2500);
         } else if (progress == 100) {
             updateDatabaseRecord('win_count', 'inc');
             alert("C0ИGЯTUL4T10ИS! ETO WIN!\nГде-то в базе данных заинкрементился счётчик побед. Это того стоило.");
             $.cookie('PROGRESS', 0);
             STREAK++;
-            setTimeout(function(){getWithAjax()}, 1500);
+            setTimeout(function(){getWithAjax()}, 2500);
         }
     }
 
@@ -115,13 +114,13 @@ $(function(e){
         var audio = document.getElementById("quest-audio");
         audio.pause();
 
-        /*$("#jumbo-notificator").css({backgroundColor:"rgba(255, 0, 0, 0.5)"})
-            .html("<p>WRONG</p>").fadeIn().delay(1000).fadeOut();*/
-        if ($ != null && $ != undefined)
+        $("#jumbo-notificator").css({backgroundColor:"rgba(255, 0, 0, 0.2)"})
+            .html("<p>WRONG</p>").fadeIn().delay(2000).fadeOut();
+        /*if ($ != null && $ != undefined)
             $.growl.error({
                 title: mocks[getRandomInt(0, cheers.length - 1)],
                 message: 'Wrong'
-            });
+            });*/
 
         $("#percentage").html("0%");
         $("#game-progress-bar").css({
@@ -130,7 +129,7 @@ $(function(e){
 
         $.cookie('PROGRESS', '0');
         STREAK = 0;
-        setTimeout(function(){getWithAjax()}, 1500);
+        setTimeout(function(){getWithAjax()}, 2500);
     }
 
 

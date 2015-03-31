@@ -1,9 +1,14 @@
 
 $(function(){
     var input = $("#search-personal-music");
+    var request;
 
     input.on("keyup", function() {
         var value = $(this).val().toLowerCase();
+
+        if (value.length < 1) {
+            $(".global-audiofiles-container").css("display", "none");
+        }
 
         var playerItems = $(".player-item");
         playerItems.each(function() {
@@ -15,6 +20,27 @@ $(function(){
                 $(this).css("display", "none");
             }
         });
+
+        if (!(undefined === request)) {
+            request.abort();
+        }
+        if (value.length > 0) {
+            request = $.ajax({
+                type: 'GET',
+                url: '../php/ajax.php?music',
+                data: {'count': 10, 'query': value},
+                beforeSend: function() {
+                    $(".global-audiofiles-container").css("display", "block");
+                    $(".global-audiofiles-container").html("<h2>Audiofiles</h2><div id='ajax-loading'></div>");
+                    $("#ajax-loading").fadeIn();
+                },
+                success: function(data) {
+                    $("#ajax-loading").fadeOut();
+                    $(".global-audiofiles-container").delay(300).append(data);
+                }
+            });
+        }
+        // TODO догрузить больше 10 песен
     })
 });
 
