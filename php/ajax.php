@@ -43,8 +43,9 @@ if (isset($_GET['db'])) {
 if (isset($_GET['music'])) {
     $count = $_GET['count'];
     $query = $_GET['query'];
+    $offset = $_GET['offset'];
 
-    $music = getGlobalMusic($query, $count, $vk);
+    $music = getGlobalMusic($query, $count, $offset, $vk);
     $list = "";
 
     for ($i = 1; $i < $count; $i++) {

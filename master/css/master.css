@@ -13,7 +13,7 @@ span.eleven {
     color: #5bc0de;
 }
 aside {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 250px;
@@ -113,6 +113,7 @@ div.content {
     display: inline-block;
     margin-right: 50px;
     width: 600px;
+    margin-top: 0px;
 }
 .content ol.ranks > li {
     padding: 15px;
@@ -192,11 +193,11 @@ div.content {
 .content .motivation {
     display: inline-block;
     vertical-align: top;
+    margin-left: 30px;
 }
 
 .self-stats-block {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-bottom: 20px;
 }
 .self-stats-progress {
     text-align: center;
@@ -222,4 +223,70 @@ div.content {
 
 .self-stats-name {
     vertical-align: middle;
+}
+
+.load-more {
+    width: 100px;
+    margin: 10px auto;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.comment-textarea {
+    height: 150px;
+    min-width: 600px;
+    position: relative;
+    border: 1px solid #2e3138;
+    font-size: inherit;
+    resize: none;
+    margin: 20px;
+    margin-left: 0;
+}
+.comment-textarea:focus {
+    outline: none;
+    border: 1px solid #5bc0de;
+}
+
+.send-comment {
+    position: relative;
+    left: -86px;
+    top: -37px;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background: #FFFFFF;
+}
+.send-comment:hover {
+    background: #2e3138;
+    color: #FFFFFF;
+}
+
+.comment {
+    min-height: 150px;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.userpic {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 130px;
+}
+.userpic img {
+    height: 130px;
+    width: 130px;
+}
+.comment-data {
+    max-width: 400px;
+    display: inline-block;
+    vertical-align: top;
+}
+.comment-data h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.comment-data p {
+    font-size: 15px;
 }

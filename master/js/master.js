@@ -30,18 +30,18 @@ $(document).ready(function(e){
     var activePage = pieces[1];
     $("a[href*='?" + activePage + "']").addClass("active");
     if (activePage == 'game' || activePage == 'music') {
-        setVolume();
+        //setVolume();
     }
     /*
     Bug fix.
      */
-    $(window).scroll(function(){
+    /*$(window).scroll(function(){
         $("aside").css("height", $(document).height());
     }).resize(function(){
         $("aside").css("height", $(document).height());
     }).load(function(){
         $("aside").css("height", $(document).height());
-    });
+    });*/
 
     /*
     Tops
@@ -61,6 +61,7 @@ $(document).ready(function(e){
     });
 });
 
+/*
 function setVolume() {
     var audio = document.getElementsByTagName("audio");
     var volume = document.getElementsByClassName("volume-bar-container")[0];
@@ -115,4 +116,4 @@ function setVolume() {
     }
 
 
-}
+}*/

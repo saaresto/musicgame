@@ -2,8 +2,11 @@
 $(function(){
     var input = $("#search-personal-music");
     var request;
+    var offset = 0;
 
     input.on("keyup", function() {
+        offset = 0; // refresh counter for the new word
+
         var value = $(this).val().toLowerCase();
 
         if (value.length < 1) {
@@ -21,27 +24,44 @@ $(function(){
             }
         });
 
-        if (!(undefined === request)) {
+        getSongsWithAjax(value, offset, false);
+    });
+
+    $(".content").on("click", ".load-more", function(){
+        offset += 10;
+        console.log(offset);
+        $(".load-more").remove();
+        getSongsWithAjax($("#search-personal-music").val().toLowerCase(), offset, true);
+    });
+
+    function getSongsWithAjax(value, param_offset, append) {
+        if (undefined !== request) {
             request.abort();
+            $("#ajax-loading").remove();
         }
         if (value.length > 0) {
             request = $.ajax({
                 type: 'GET',
                 url: '../php/ajax.php?music',
-                data: {'count': 10, 'query': value},
+                data: {'count': 10, 'query': value, 'offset': param_offset},
                 beforeSend: function() {
-                    $(".global-audiofiles-container").css("display", "block");
-                    $(".global-audiofiles-container").html("<h2>Audiofiles</h2><div id='ajax-loading'></div>");
-                    $("#ajax-loading").fadeIn();
+                    if (!append) {
+                        $(".global-audiofiles-container").css("display", "block")
+                            .html("<h2>Audiofiles</h2><div id='ajax-loading'></div>");
+                        $(".load-more").remove();
+                        $("#ajax-loading").fadeIn();
+                    } else {
+                        $(".global-audiofiles-container").append("<div id='ajax-loading'></div>");
+                        $("#ajax-loading").fadeIn();
+                    }
                 },
                 success: function(data) {
-                    $("#ajax-loading").fadeOut();
-                    $(".global-audiofiles-container").delay(300).append(data);
+                    $("#ajax-loading").remove();
+                    $(".global-audiofiles-container").append(data).append("<div class=\"load-more\">More</div>");
                 }
             });
         }
-        // TODO догрузить больше 10 песен
-    })
+    }
 });
 
 
@@ -68,7 +88,7 @@ function playAudio(id) {
      */
     var players = document.getElementsByTagName("audio");
     var buttons = document.getElementsByClassName("player-item-button");
-    for (i = 0; i < players.length; i++) {
+    for (var i = 0; i < players.length; i++) {
 
         if (players[i] !== audio){
             buttons[i].innerHTML = "<span class='glyphicon glyphicon-play'></span>";

@@ -5,7 +5,7 @@
 $link = mysql_connect($DBHOST, $DBUSER, $DBPASSWORD);
 mysql_select_db($DBNAME);
 
-$leaders_query = "SELECT * FROM user_stats WHERE hit_count>0 ORDER BY user_stats.successful_hits_count/user_stats.hit_count DESC";
+$leaders_query = "SELECT * FROM user_stats WHERE hit_count>0 ORDER BY user_stats.successful_hits_count/user_stats.hit_count*(1+win_count) DESC";
 $leaders = mysql_query($leaders_query);
 if (!$leaders) {
     die(mysql_error());
@@ -16,6 +16,7 @@ if (!$leaders) {
 <div class="wallpaper" style="background: url('../assets/forest<?php echo rand(1,5);?>.jpg')"></div>
 <div class="top">
     <h1>Top-10 players</h1>
+    <p style="color:rgba(0,0,0,0.6); font-size:17px">Rating is calculated as (SUCCESSFUL_HITS / TOTAL_HITS) * (1 + WIN_COUNT).</p>
     <ol class="ranks">
         <?php
             while ($leader = mysql_fetch_array($leaders)) {
@@ -23,7 +24,7 @@ if (!$leaders) {
                 <li><a title="Go to VK page" target="_blank" href="http://vk.com/<?php echo $leader['screen_name'] ?>"><?php echo $leader['screen_name'] ?></a>
                     <span>
                         <?php
-                        echo $leader['hit_count'] != 0 ? round($leader['successful_hits_count']/$leader['hit_count'], 3) : 0;
+                        echo $leader['hit_count'] != 0 ? round($leader['successful_hits_count']/$leader['hit_count']*(1+$leader['win_count']), 3) : 0;
                         ?>
                     </span>
 
@@ -51,8 +52,8 @@ $self = mysql_fetch_array($self);
         <span class="self-stats-value" style="color: #5bc0de">
             <?php
             if ($self['hit_count'] > 0) {
-                $query = "SELECT count(*) FROM user_stats WHERE successful_hits_count/hit_count > ";
-                $query .= "(SELECT successful_hits_count/hit_count FROM user_stats WHERE uid=".$_COOKIE['USER_ID'].");";
+                $query = "SELECT count(*) FROM user_stats WHERE user_stats.successful_hits_count/user_stats.hit_count*(1+win_count) > ";
+                $query .= "(SELECT user_stats.successful_hits_count/user_stats.hit_count*(1+win_count) FROM user_stats WHERE uid=".$_COOKIE['USER_ID'].");";
                 $rs = mysql_fetch_array(mysql_query($query));
                 print_r($rs[0] + 1);
             } else {

@@ -1,5 +1,4 @@
 <?php
-    // TODO set up font sizes
 require_once("../php/AppInfo.php");
 /*
 * NO GUESTS ALLOWED.
@@ -16,7 +15,7 @@ require_once("../php/VKException.php");
 ?><!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Eleven - the music game.</title>
     <link href="css/jquery.growl.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/master.css" rel="stylesheet">
@@ -52,14 +51,21 @@ $vk->setToken($_COOKIE['TOKEN']);
 
 $user = getUserInfo($_COOKIE['USER_ID'], $vk);
 
-/*
+$bug = mysql_query("SELECT * FROM user_stats WHERE uid=".$_COOKIE['USER_ID']);
+if (mysql_num_rows($bug) == 0) {
+    /*
  * Insert user data to database.
  */
-$insert = "INSERT INTO user_stats(uid, screen_name, win_count, hit_count, successful_hits_count)".
-    " VALUES('".$user['uid'] != null ? $user['uid'] : "undefined"."', '".$user['screen_name'] != null ? $user['screen_name'] : "undefined"."', 0, 0, 0)";
-if (!mysql_query($insert, $link)) {
-    //die("not inserted ".mysql_error());
+    $uid = $user['uid'];
+    $un = $user['screen_name'];
+    $insert = "INSERT INTO user_stats(uid, screen_name, win_count, hit_count, successful_hits_count)".
+        " VALUES('".$user['uid']."', '".$user['screen_name']."', 0, 0, 0)";
+    if (!mysql_query($insert)) {
+        echo($insert);
+        die(" >> ".mysql_error());
+    }
 }
+
 ?>
 
 <aside id="sidebar">
@@ -73,15 +79,16 @@ if (!mysql_query($insert, $link)) {
     <a class="navlink" href="<?php echo $ROOT_URL."master/"; ?>?ratings">Ratings</a>
     <a class="navlink" href="<?php echo $ROOT_URL."master/"; ?>?music">My music</a>
     <a class="navlink" href="<?php echo $ROOT_URL."master/"; ?>?about">About</a>
+    <a class="navlink" href="<?php echo $ROOT_URL."master/"; ?>?discuss">Discuss</a>
 
-    <?php if (isset($_GET['game']) || isset($_GET['music'])) { ?>
+    <?php /*if (isset($_GET['game']) || isset($_GET['music'])) { */?><!--
     <div class="volume-container">
         <div class="volume-icon"><span class="glyphicon glyphicon-volume-up"></span></div>
         <div class="volume-bar-container" onclick="setVolume()">
             <span class="volume-bar"></span>
         </div>
     </div>
-    <?php } ?>
+    --><?php /*} */?>
 
     <a class="navlink logout" href="../logout.php?logout">Logout</a>
 
@@ -122,6 +129,12 @@ if (!mysql_query($insert, $link)) {
     if (isset($_GET['music'])) {
         require_once("musiclist.php");
         }
+    ?>
+
+    <?php
+    if (isset($_GET['discuss'])) {
+        require_once("discuss.php");
+    }
     ?>
 
 </div>

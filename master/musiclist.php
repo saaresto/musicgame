@@ -12,7 +12,6 @@ $music = getUserMusic($_COOKIE['USER_ID'], 300, $vk);
 
 $music = $music['response'];
 $count = $music[0];
-// TODO make a global search, вынести создание player-item'а в отдельную функцию с массивом $music в параметре
 ?>
 
 <div class="audiofiles-container">

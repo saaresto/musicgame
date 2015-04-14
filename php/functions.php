@@ -16,12 +16,13 @@ function getUserMusic($userid, $count, $vkobj) {
     ));
 }
 
-function getGlobalMusic($query, $count, $vkobj) {
+function getGlobalMusic($query, $count, $offset, $vkobj) {
     $response = $vkobj->api("audio.search", array(
         'q' =>  $query,
         'count' =>  $count,
         'auto_complete' =>  0,
-        'search_own'    =>  0
+        'search_own'    =>  0,
+        'offset'    =>  $offset
     ));
 
     return $response['response'];
@@ -42,6 +43,7 @@ function getSongDuration($duration){
 }
 
 function getPlayerItem($song) {
+    if (strlen($song['aid']) < 1) return "";
     $item = "";
 
     $item .= "<div class='player-item' id='" . $song['aid'] . "-item'>\n";
