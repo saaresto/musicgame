@@ -6,8 +6,8 @@
  * Time: 19:39
  */
 
-$APP_ID = '4796472';
-$SECRET = 'FYbMApvtw3lQaAcdnVN2';
+$APP_ID = '2345622';
+$SECRET = 'Sfdmkgdoqwp,v78admj2';
 $ROOT_URL = "http://localhost:63342/juke/";
 $CALLBACK_URL = $ROOT_URL."authorize.php";
 $vk_config = array(
